@@ -6,8 +6,11 @@
 
 const fs = require('fs');
 const path = require('path');
+// 终端交互，类似库还有：inquirer、commander
 const prompts = require('prompts');
+// 参数解析，类似库还有：yargs
 const argv = require('minimist')(process.argv.slice(2), { string: ['_']});
+// 终端输出着色，类似库还有：chalk
 const { red, blue, green, cyan, reset } = require('kolorist');
 
 const checkIsExistDir = (path) => {

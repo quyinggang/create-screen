@@ -3,12 +3,12 @@ export const getScale = () => {
   const height = window.innerHeight
   const pw = width / 1920
   const ph = height / 1080
-  return pw < ph ? pw : ph
+  return { scaleX: pw, scaleY: ph, minScale: Math.min(pw, ph)}
 }
 
 export const calcCurrentSize = (value: number, minValue: number) => {
-  const rate = getScale()
-  return Math.max(minValue, value * rate)
+  const { minScale } = getScale()
+  return Math.max(minValue, value * minScale)
 }
 
 export const getUrlSearchParams = () => {

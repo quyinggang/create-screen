@@ -23,8 +23,11 @@ function App() {
 
   useEffect(() => {
     const initRootFontSize = () => {
-      const fontSize = getScale() * 100;
+      const { minScale } = getScale()
+      const fontSize = minScale * 100;
       document.documentElement.style.fontSize = `${fontSize}px`;
+      // const { scaleX, scaleY } = getScale()
+      // document.documentElement.style.transform = `scale(${scaleX},${scaleY})`
     };
     const resizeHandler = debounce(() => {
       initRootFontSize();

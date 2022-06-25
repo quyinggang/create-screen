@@ -1,12 +1,17 @@
 import { WEEK_DAY_ALIAS_MAP } from '@/utils/constants';
 
 export const getScale = () => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const pw = width / 1920;
-  const ph = height / 1080;
-  return pw < ph ? pw : ph;
-};
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const pw = width / 1920
+  const ph = height / 1080
+  return { scaleX: pw, scaleY: ph, minScale: Math.min(pw, ph)}
+}
+
+export const calcCurrentSize = (value: number, minValue: number) => {
+  const { minScale } = getScale()
+  return Math.max(minValue, value * minScale)
+}
 
 export const getUrlSearchParams = () => {
   try {
